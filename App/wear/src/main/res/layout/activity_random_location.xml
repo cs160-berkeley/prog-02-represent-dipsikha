@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:gravity="center" android:layout_gravity="center"
+    tools:context=".MainActivity" android:orientation="vertical" tools:deviceIds="wear_round"
+    android:background="@color/purple">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="✓"
+        android:id="@+id/yes"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView android:id="@+id/district" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TX 23"
+        android:textColor="#FFFFFF"
+        android:textSize="32sp"
+        android:layout_marginTop="12dp"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView android:id="@+id/state" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Texas"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:layout_marginBottom="12dp"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x"
+        android:id="@+id/no"
+        android:background="@color/purple"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_gravity="center_horizontal" />
+
+
+</LinearLayout>
+

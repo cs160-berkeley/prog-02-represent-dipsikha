@@ -1,0 +1,75 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:padding="52dp"
+    android:orientation="vertical"
+    android:background="@color/purple"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="96dp"
+        android:layout_marginBottom="4dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/marker_icon"
+            android:background="@drawable/zipcode"
+            android:layout_gravity="center_vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+             />
+
+        <EditText
+            android:id="@+id/zipcode"
+            android:layout_weight="10"
+            android:layout_marginLeft="38dp"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Zipcode"
+            android:inputType="textNoSuggestions"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:singleLine="true"
+            />
+
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/currentloc"
+        android:layout_marginTop="4dp"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:textColor="@color/white"
+        android:background="@drawable/button"
+        android:layout_marginBottom="48dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:text="Set Current location"
+        />
+
+
+
+
+    <Button
+        android:id="@+id/represent"
+        android:background="@drawable/button"
+        android:textColor="@color/white"
+        android:layout_width="fill_parent"
+        android:layout_height="48dp"
+        android:text="Represent"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/fred_img" />
+
+
+
+</LinearLayout>
