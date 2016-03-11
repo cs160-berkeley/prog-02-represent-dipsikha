@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.HashMap;
+
 public class MainActivity extends Activity implements Fragment2012.OnFragmentInteractionListener {
 
     /* put this into your activity class */
@@ -26,6 +28,7 @@ public class MainActivity extends Activity implements Fragment2012.OnFragmentInt
     private float mAccelCurrent; // current acceleration including gravity
     private float mAccelLast; // last acceleration including gravity
     private SensorEventListener mSensorListener;
+    private int index;
 
 
 
@@ -35,8 +38,19 @@ public class MainActivity extends Activity implements Fragment2012.OnFragmentInt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.grid);
 
+        Bundle b = getIntent().getExtras();
+        HashMap<String, String> data = (HashMap<String, String>) b.get("DATA");
+        Log.d("MAINACTIVITY", data.values().toString());
+        Log.d("MAINACTIVITY", data.keySet().toString());
+        index = 0;
+
+
+
+        //2012 DATA
+
+
         final GridViewPager mGridPager = (GridViewPager) findViewById(R.id.pager);
-        mGridPager.setAdapter(new SampleGridPagerAdapter(this, getFragmentManager()));
+        mGridPager.setAdapter(new SampleGridPagerAdapter(this, data, getFragmentManager()));
 
         mAccel = 0.00f;
         mAccelCurrent = SensorManager.GRAVITY_EARTH;
@@ -53,8 +67,8 @@ public class MainActivity extends Activity implements Fragment2012.OnFragmentInt
                 float delta = mAccelCurrent - mAccelLast;
                 mAccel = mAccel * 0.9f + delta; // perform low-cut filter
                 Log.d("Main", mAccel+" ");
-                if (mAccel > 19 && mAccel < 21) {
-
+                if (mAccel > 200 && index < 1) {
+                    index++;
                     startActivity(new Intent(MainActivity.this, ShakeSplash.class));
                 }
             }

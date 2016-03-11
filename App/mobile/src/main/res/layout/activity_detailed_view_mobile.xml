@@ -1,5 +1,11 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,59 +13,131 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
+    android:id="@+id/details"
     tools:context="com.cs160.joleary.catnip.DetailedViewMobile">
-
-    <ImageView
-        android:id="@+id/photo"
-        android:layout_width="fill_parent"
-        android:background="@drawable/barbaratho"
-        android:layout_marginBottom="16dp"
-        android:layout_height="196dp" />
-
-    <TextView
-        android:id="@+id/name"
-        android:text="Barbara Boxer"
-        android:gravity="center"
-        android:textSize="24dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/date"
-        android:text="January 3, 2007 – January 3, 2015"
-        android:gravity="center"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_width="fill_parent"
+        android:padding="24dp"
         android:orientation="horizontal"
-        android:layout_marginTop="24dp"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/committees"
-            android:padding="4dp"
-            android:layout_width="wrap_content"
-            android:layout_weight="1"
-            android:layout_height="fill_parent"
-            android:text="Committee on Commerce, Science, and Transportation
-Subcommittee on Aviation Operations, Safety, and Security
-Subcommittee on Consumer Protection, Product Safety, and Insurance
-"/>
+        <ImageView
+            android:id="@+id/photo"
+            android:layout_width="148dp"
+            android:background="@drawable/barbaratho"
+            android:layout_height="148dp" />
 
-        <TextView
-            android:id="@+id/bills"
-            android:padding="4dp"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="fill_parent"
-            android:text="S. 2487: Female Veteran Suicide Prevention Act
-S. 2412: Tule Lake National Historic Site Establishment Act of 2015
-S. 2204: End of Suffering Act of 2015
-S. 2157: SAFE DRONE Act of 2015"/>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:paddingLeft="24dp"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/name"
+                android:layout_marginTop="24dp"
+                android:text="Barbara Boxer"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="24dp"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+
+            <TextView
+                android:id="@+id/date"
+                android:text="End Date"
+                android:padding="8dp"
+                android:textColor="@color/white"
+
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
 
     </LinearLayout>
 
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:paddingTop="18dp"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="196dp">
+
+            <TextView
+                android:padding="4dp"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18dp"
+                android:textColor="@color/white"
+
+                android:layout_gravity="center"
+                android:layout_height="fill_parent"
+                android:text="Committees"/>
+
+            <TextView
+                android:id="@+id/committees"
+                android:padding="4dp"
+                android:textColor="@color/white"
+
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
+                android:text="Com"/>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp"
+
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:orientation="vertical"
+            android:layout_height="196dp">
+
+
+            <TextView
+                android:padding="4dp"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:textSize="18dp"
+                android:textColor="@color/white"
+
+                android:layout_height="fill_parent"
+                android:text="Bills"/>
+
+            <TextView
+                android:id="@+id/bills"
+                android:padding="4dp"
+                android:layout_weight="1"
+                android:textColor="@color/white"
+
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="Bills"/>
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
+
 </LinearLayout>
+</ScrollView>

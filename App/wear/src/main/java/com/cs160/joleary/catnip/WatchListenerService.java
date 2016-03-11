@@ -7,6 +7,7 @@ import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.WearableListenerService;
 
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 
 /**
  * Created by joleary and noon on 2/19/16 at very late in the night. (early in the morning?)
@@ -23,13 +24,24 @@ public class WatchListenerService extends WearableListenerService {
         //(here, fred vs lexy)
 
         if( messageEvent.getPath().equalsIgnoreCase( FRED_FEED ) ) {
-            String value = new String(messageEvent.getData(), StandardCharsets.UTF_8);
-            Intent intent = new Intent(this, MainActivity.class );
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            //you need to add this flag since you're starting a new activity from a service
-            intent.putExtra("LOCATION_NAME", "Berkeley");
-            Log.d("T", "about to start watch MainActivity with LOCATION NAME: Berkeley");
-            startActivity(intent);
+            //String value = new String(messageEvent.getData(), StandardCharsets.UTF_8);
+            try {
+                HashMap<String, String> value = (HashMap<String, String>) Serializer.deserialize(messageEvent.getData());
+                //Log.d("WATCHLISTENER", value.get("DIPS"));
+                Intent intent = new Intent(this, MainActivity.class );
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                //you need to add this flag since you're starting a new activity from a service
+                intent.putExtra("DATA", value);
+                Log.d("T", "about to start watch MainActivity with LOCATION NAME: Berkeley");
+                startActivity(intent);
+            } catch (Exception e) {
+                Log.d("WATCHLISTENER", "couldnt deserialize"+e);
+
+            }
+
+
+
+
 
         } else {
             super.onMessageReceived( messageEvent );

@@ -12,6 +12,11 @@ import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.Wearable;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.HashMap;
+
 /**
  * Created by joleary on 2/19/16.
  */
@@ -48,7 +53,12 @@ public class PhoneToWatchService extends Service {
         // Which cat do we want to feed? Grab this info from INTENT
         // which was passed over when we called startService
         Bundle extras = intent.getExtras();
-        final String catName = extras.getString("LOCATION_NAME");
+        //final String catName = extras.getString("ZIPCODE");
+        final HashMap<String, String> msg = (HashMap<String, String>) extras.get("DATA");
+        Log.d("PHONETOWATCH", msg.keySet().toString());
+        Log.d("PHONETOWATCH", msg.values().toString());
+
+
 
         // Send the message with the cat name
         new Thread(new Runnable() {
@@ -57,7 +67,10 @@ public class PhoneToWatchService extends Service {
                 //first, connect to the apiclient
                 mApiClient.connect();
                 //now that you're connected, send a massage with the cat name
-                sendMessage("/" + catName, catName);
+                //HashMap<String, String> msg = new HashMap<String, String>();
+                //msg.put("DIPS", "DEMOCRAT");
+                sendMessage("/" + "Berkeley", msg);
+
             }
         }).start();
 
@@ -69,7 +82,7 @@ public class PhoneToWatchService extends Service {
         return null;
     }
 
-    private void sendMessage( final String path, final String text ) {
+    private void sendMessage( final String path, final HashMap<String, String> data) {
         //one way to send message: start a new thread and call .await()
         //see watchtophoneservice for another way to send a message
         new Thread( new Runnable() {
@@ -79,13 +92,19 @@ public class PhoneToWatchService extends Service {
                 for(Node node : nodes.getNodes()) {
                     //we find 'nodes', which are nearby bluetooth devices (aka emulators)
                     //send a message for each of these nodes (just one, for an emulator)
-                    MessageApi.SendMessageResult result = Wearable.MessageApi.sendMessage(
-                            mApiClient, node.getId(), path, text.getBytes() ).await();
-                    //4 arguments: api client, the node ID, the path (for the listener to parse),
-                    //and the message itself (you need to convert it to bytes.)
+                    try {
+                        MessageApi.SendMessageResult result = Wearable.MessageApi.sendMessage(
+                                mApiClient, node.getId(), path, Serializer.serialize(data) ).await();
+                        //4 arguments: api client, the node ID, the path (for the listener to parse),
+                        //and the message itself (you need to convert it to bytes.)
+                    } catch (Exception e) {
+                        Log.d("PHONETOWATCH", "COULD NOT SERIALIZE");
+                    }
+
                 }
             }
         }).start();
     }
+
 
 }

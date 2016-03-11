@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center" android:layout_gravity="center"
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    tools:deviceIds="wear_round"
+    android:id="@+id/background"
+    android:background="@color/purple">
+
+
+    <TextView android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp" />
+
+    <TextView android:id="@+id/party"
+        android:layout_marginTop="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Party"
+        android:textColor="#FFFFFF"
+        android:textSize="12sp" />
+
+
+
+
+</LinearLayout>
